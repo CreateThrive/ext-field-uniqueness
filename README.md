@@ -67,15 +67,20 @@ To install an extension, your project must be on the [Blaze (pay as you go) plan
 * Field name: What is the name of the field that you want to check for uniqueness?
 
 
+* Hash field: The value of the unique field will be used as an id for a new document in Firestore. Would you like to hash the value of the field due to contraints on document IDs?
+
+
 * Aux collection: What is the name of the auxiliar collection where you want to write documents?
 
 **Cloud Functions:**
 
 * **fieldUniqueness:** Listens for writes of a specified field to your specified Cloud Firestore collection, then writes a new document using that field's value as the key to a specified aux collection that will serve for checking uniqueness.
 
+* **fieldUniquenessBackfill:** Searches your specified Cloud Firestore collection for existing documents, then writes the new documents in the aux collection.
+
 
 **Access Required**:
 
 This extension will operate with the following project IAM roles:
 
-* datastore.user (Reason: Allows the extension to write translated strings to Cloud Firestore.)
+* datastore.user (Reason: Allows the extension to write to Cloud Firestore.)
